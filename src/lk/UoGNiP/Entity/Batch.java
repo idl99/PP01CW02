@@ -76,7 +76,7 @@ public class Batch {
         return overallClassAvg;
     }
 
-    public List<Student> ict01MarksBelow30(){
+    public List<Student> numOfIct01MarksBelow30(){
         List<Student> listOfStd = new ArrayList<Student>();
         for(Student std: list_Of_Students){
             if (std.getIct01Marks()<30) listOfStd.add(std);
@@ -84,7 +84,7 @@ public class Batch {
         return listOfStd;
     }
 
-    public List<Student> ict02MarksBelow30(){
+    public List<Student> numOfIct02MarksBelow30(){
         List<Student> listOfStd = new ArrayList<Student>();
         for(Student std: list_Of_Students){
             if (std.getIct02Marks()<30) listOfStd.add(std);
@@ -92,7 +92,7 @@ public class Batch {
         return listOfStd;
     }
 
-    public List<Student> groupCw01MarksBelow30(){
+    public List<Student> numOfGroupCw01MarksBelow30(){
         List<Student> listOfStd = new ArrayList<Student>();
         for(Student std: list_Of_Students){
             if (std.getGroupCW01Marks()<30) listOfStd.add(std);
@@ -100,7 +100,7 @@ public class Batch {
         return listOfStd;
     }
 
-    public List<Student> groupCw02MarksBelow30(){
+    public List<Student> numOfGroupCw02MarksBelow30(){
         List<Student> listOfStd = new ArrayList<Student>();
         for(Student std: list_Of_Students){
             if (std.getGroupCW02Marks()<30) listOfStd.add(std);

@@ -28,14 +28,14 @@ public class Student implements Comparable<Student> {
 
         super();
         this.regNo = paramForm.getRegNo();
-        this.fName = paramForm.getInputFName();
-        this.lName = paramForm.getInputLName();
+        this.fName = paramForm.getFName();
+        this.lName = paramForm.getLName();
 
-        this.ict01Marks = paramForm.getInputICT01Marks();
-        this.ict02Marks = paramForm.getInputICT02Marks();
+        this.ict01Marks = paramForm.getIct01Marks();
+        this.ict02Marks = paramForm.getIct02Marks();
 
-        this.groupCW01Marks = paramForm.getInputGroupCW01Marks();
-        this.groupCW02Marks = paramForm.getGetInputGroupCW02Marks();
+        this.groupCW01Marks = paramForm.getGroupCw01Marks();
+        this.groupCW02Marks = paramForm.getGroupCw02Marks();
         this.overallMarks = setOverallMarks();
         this.overallGrade = setOverallGrade();
 

@@ -84,27 +84,27 @@ public class InputForm {
         return inputRegNo;
     }
 
-    public String getInputFName() {
+    public String getFName() {
         return inputFName;
     }
 
-    public String getInputLName() {
+    public String getLName() {
         return inputLName;
     }
 
-    public int getInputICT01Marks() {
+    public int getIct01Marks() {
         return inputICT01Marks;
     }
 
-    public int getInputICT02Marks() {
+    public int getIct02Marks() {
         return inputICT02Marks;
     }
 
-    public int getInputGroupCW01Marks() {
+    public int getGroupCw01Marks() {
         return inputGroupCW01Marks;
     }
 
-    public int getGetInputGroupCW02Marks() {
+    public int getGroupCw02Marks() {
         return inputGroupCW02Marks;
     }
 }
