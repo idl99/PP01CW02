@@ -82,7 +82,8 @@ public class Student implements Comparable<Student> {
 
     private Grade setOverallGrade() {
 
-        if (overallMarks >= 40 && ((ict01Marks + ict02Marks) / 2) >= 30 && groupCW01Marks >= 30 &&
+        if (overallMarks < 30) overallGrade = Grade.F_Retake;
+        else if (overallMarks >= 40 && ((ict01Marks + ict02Marks) / 2) >= 30 && groupCW01Marks >= 30 &&
                 groupCW02Marks >= 30) {
 
             if (overallMarks >= 70) overallGrade = Grade.FC;
@@ -101,13 +102,14 @@ public class Student implements Comparable<Student> {
             if(groupCW01Marks<30) toResit.add(Component.GroupCw01);
             if(groupCW02Marks<30) toResit.add(Component.GroupCw02);
 
-        } else if ((overallMarks >= 30 && overallMarks < 40)) overallGrade = Grade.F_Resit;
-
+        } else if ((overallMarks >= 30 && overallMarks < 40)){
+            overallGrade = Grade.F_Resit;
             if(((ict01Marks+ict02Marks)/2)<40) toResit.add(Component.Ict);
             if(groupCW01Marks<40) toResit.add(Component.GroupCw01);
             if(groupCW02Marks<40) toResit.add(Component.GroupCw02);
 
-        else if (overallMarks < 30) overallGrade = Grade.F_Retake;
+        }
+
 
         return overallGrade;
     }

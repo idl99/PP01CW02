@@ -76,36 +76,36 @@ public class Batch {
         return overallClassAvg;
     }
 
-    public List<Student> numOfIct01MarksBelow30(){
+    public int numOfIct01MarksBelow30(){
         List<Student> listOfStd = new ArrayList<Student>();
         for(Student std: list_Of_Students){
             if (std.getIct01Marks()<30) listOfStd.add(std);
         }
-        return listOfStd;
+        return listOfStd.size();
     }
 
-    public List<Student> numOfIct02MarksBelow30(){
+    public int numOfIct02MarksBelow30(){
         List<Student> listOfStd = new ArrayList<Student>();
         for(Student std: list_Of_Students){
             if (std.getIct02Marks()<30) listOfStd.add(std);
         }
-        return listOfStd;
+        return listOfStd.size();
     }
 
-    public List<Student> numOfGroupCw01MarksBelow30(){
+    public int numOfGroupCw01MarksBelow30(){
         List<Student> listOfStd = new ArrayList<Student>();
         for(Student std: list_Of_Students){
             if (std.getGroupCW01Marks()<30) listOfStd.add(std);
         }
-        return listOfStd;
+        return listOfStd.size();
     }
 
-    public List<Student> numOfGroupCw02MarksBelow30(){
+    public int numOfGroupCw02MarksBelow30(){
         List<Student> listOfStd = new ArrayList<Student>();
         for(Student std: list_Of_Students){
             if (std.getGroupCW02Marks()<30) listOfStd.add(std);
         }
-        return listOfStd;
+        return listOfStd.size();
     }
 
     public List<Student> getStdsBelowOverallClassAvg() {
@@ -126,7 +126,7 @@ public class Batch {
         Collections.sort(stdsAboveClassAvg, new Comparator<Student>() {
             @Override
             public int compare(Student o1, Student o2) {
-                return o1.getOverallMarks() - o2.getOverallMarks();
+                return o2.getOverallMarks() - o1.getOverallMarks();
             }
         });
         return (stdsAboveClassAvg);
@@ -207,7 +207,7 @@ public class Batch {
     public List<Student> getListOfRetakeStudents() {
         List<Student> listOfStd = new ArrayList<>();
         for (Student student : list_Of_Students) {
-            if (student.getOverallGrade() == Grade.F_Retake) listOfStd.add(student);
+            if (student.getOverallGrade()==Grade.F_Retake) listOfStd.add(student);
         }
         return listOfStd;
     }
@@ -215,7 +215,7 @@ public class Batch {
     public List<Student> getListOfIctResits(){
         List<Student> listOfStd = new ArrayList<>();
         for (Student std: list_Of_Students){
-            if(std.getToResit().contains(Component.Ict)) listOfStd.add(std);
+            if(std.getOverallGrade()!=Grade.F_Retake && std.getToResit().contains(Component.Ict)) listOfStd.add(std);
         }
         return listOfStd;
     }
@@ -223,7 +223,7 @@ public class Batch {
     public List<Student> getListOfGroupCW01Resits(){
         List<Student> listOfStd = new ArrayList<>();
         for (Student std: list_Of_Students){
-            if(std.getToResit().contains(Component.GroupCw01)) listOfStd.add(std);
+            if(std.getOverallGrade()!=Grade.F_Retake && std.getToResit().contains(Component.GroupCw01)) listOfStd.add(std);
         }
         return listOfStd;
     }
@@ -231,7 +231,7 @@ public class Batch {
     public List<Student> getListOfGroupCW02Resits(){
         List<Student> listOfStd = new ArrayList<>();
         for (Student std: list_Of_Students){
-            if(std.getToResit().contains(Component.GroupCw02)) listOfStd.add(std);
+            if(std.getOverallGrade()!=Grade.F_Retake && std.getToResit().contains(Component.GroupCw02)) listOfStd.add(std);
         }
         return listOfStd;
     }
