@@ -66,7 +66,7 @@ public class Test {
             } while (!(userOpt >= 0 && userOpt <= 12));
 
 
-            /*if (userOpt == 0) break;
+            if (userOpt == 0) break;
             else if (userOpt > 1) {
                 if (!checkIfStudent(listOfStudents)) {
                     if (!checkIfStudent(listOfStudents)) {
@@ -74,7 +74,7 @@ public class Test {
                         continue;
                     }
                 }
-            }*/
+            }
 
 
             switch (userOpt) {
