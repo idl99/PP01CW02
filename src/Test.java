@@ -1,7 +1,9 @@
 import lk.UoGNiP.Entity.Student;
 import lk.UoGNiP.Entity.Batch;
 import lk.UoGNiP.Data.InputForm;
-import lk.UoGNiP.GUI.TestGUI;
+import lk.UoGNiP.GUI.HorizontalGui;
+import lk.UoGNiP.GUI.VerticalGui;
+import lk.UoGNiP.GUI.VerticalStars;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +66,7 @@ public class Test {
             } while (!(userOpt >= 0 && userOpt <= 12));
 
 
-            if (userOpt == 0) break;
+            /*if (userOpt == 0) break;
             else if (userOpt > 1) {
                 if (!checkIfStudent(listOfStudents)) {
                     if (!checkIfStudent(listOfStudents)) {
@@ -72,7 +74,7 @@ public class Test {
                         continue;
                     }
                 }
-            }
+            }*/
 
 
             switch (userOpt) {
@@ -206,7 +208,11 @@ public class Test {
                     }
                     break;
                 case 11:
-                    TestGUI gui = new TestGUI(listOfStudents);
+                    HorizontalGui hGui = new HorizontalGui(listOfStudents);
+                    break;
+                case 12:
+                    VerticalGui vGui = new VerticalGui(listOfStudents);
+                    break;
             }
 
             while (true) {

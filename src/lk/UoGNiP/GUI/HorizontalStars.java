@@ -3,7 +3,7 @@ package lk.UoGNiP.GUI;
 import javax.swing.*;
 import java.awt.*;
 
-public class Stars extends JPanel {
+public class HorizontalStars extends JPanel {
 
     int numOfStars = 0;
 
@@ -15,11 +15,10 @@ public class Stars extends JPanel {
         for(int i=0; i<numOfStars; i++){
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 20));
             g2d.drawString("*",20+(i*10),45);
-            //g2d.fillOval(20+(i*10), 30, 5, 5);
         }
     }
 
-    public Stars(int paramNumOfStars){
+    public HorizontalStars(int paramNumOfStars){
         this.numOfStars = paramNumOfStars;
     }
 
