@@ -1,6 +1,7 @@
 import lk.UoGNiP.Entity.Student;
 import lk.UoGNiP.Entity.Batch;
 import lk.UoGNiP.Data.InputForm;
+import lk.UoGNiP.GUI.TestGUI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +10,10 @@ import java.util.Scanner;
 
 public class Test {
 
-    public static boolean checkIfStudent(List<Student> param){
-        if (param.size()==0){
+    public static List<Student> listOfStudents = new ArrayList<>();
+
+    public static boolean checkIfStudent(List<Student> param) {
+        if (param.size() == 0) {
             return false;
         }
         return true;
@@ -18,7 +21,6 @@ public class Test {
 
     public static void main(String[] args) {
 
-        List<Student> listOfStudents = new ArrayList<>();
         Batch seBatch = null;
 
         Scanner sc = new Scanner(System.in);
@@ -32,16 +34,18 @@ public class Test {
                     "\nWELCOME TO UoG NiP Student Report System for PP01" +
                     "\n==================================================" +
                     "\n" +
-                    "\n1.  (FR1) Enter student details" +
-                    "\n2.  (FR2) View class average for individual components" +
-                    "\n3.  (FR3) View number of failed students for individual components" +
-                    "\n4.  (FR4) View overall class average" +
-                    "\n5.  (FR5) View students below class average" +
-                    "\n6.  (FR6) View student above class average" +
-                    "\n7.  (FR7) View highest scorers" +
-                    "\n8.  (FR8) View overall lowest scorer" +
-                    "\n9.  (FR9) View retake students" +
-                    "\n10. (FR10) View list of resit student for invidiual components" +
+                    "\n1.  (FR1) |   Enter student details" +
+                    "\n2.  (FR2) |   View class average for individual components" +
+                    "\n3.  (FR3) |   View number of failed students for individual components" +
+                    "\n4.  (FR4) |   View overall class average" +
+                    "\n5.  (FR5) |   View students below class average" +
+                    "\n6.  (FR6) |   View student above class average" +
+                    "\n7.  (FR7) |   View highest scorers" +
+                    "\n8.  (FR8) |   View overall lowest scorer" +
+                    "\n9.  (FR9) |   View retake students" +
+                    "\n10. (FR10)|   View list of resit student for individiual components" +
+                    "\n11. (FR11)|   Display horizontal histogram" +
+                    "\n12. (FR12)|   Display vertical histogram" +
                     "\n");
 
             do {
@@ -54,10 +58,10 @@ public class Test {
                     sc.next();
                 }
                 userOpt = sc.nextInt();
-                if (!(userOpt >= 0 && userOpt <= 10)) {
+                if (!(userOpt >= 0 && userOpt <= 12)) {
                     System.out.println("Invalid input...");
                 }
-            } while (!(userOpt >= 0 && userOpt <= 10));
+            } while (!(userOpt >= 0 && userOpt <= 12));
 
 
             if (userOpt == 0) break;
@@ -166,7 +170,6 @@ public class Test {
                     }
                     break;
                 case 10:
-
                     if (seBatch.getListOfIctResits().size() == 0) System.out.println("No students to resit for ICT");
                     else {
                         System.out.println("\nList of Resit students for ICT\n");
@@ -202,16 +205,16 @@ public class Test {
                         }
                     }
                     break;
-
+                case 11:
+                    TestGUI gui = new TestGUI(listOfStudents);
             }
 
             while (true) {
                 System.out.print("\nPress 0 in the prompt below to go back or X\n>>>: ");
-                userOpt2= sc.next().charAt(0);
-                if(!((userOpt2=='0')||(userOpt2=='X'))){
+                userOpt2 = sc.next().charAt(0);
+                if (!((userOpt2 == '0') || (userOpt2 == 'X'))) {
                     System.out.println("Invalid input");
-                }
-                else break;
+                } else break;
             }
             if (userOpt2 == '0') continue;
             else if (userOpt2 == 'X') break;
