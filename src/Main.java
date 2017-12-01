@@ -1,16 +1,17 @@
 import lk.UoGNiP.Entity.Student;
 import lk.UoGNiP.Entity.Batch;
+
 import lk.UoGNiP.Data.InputForm;
+
 import lk.UoGNiP.GUI.HorizontalGui;
 import lk.UoGNiP.GUI.VerticalGui;
-import lk.UoGNiP.GUI.VerticalStars;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 
-public class Test {
+public class Main {
 
     public static List<Student> listOfStudents = new ArrayList<>();
 
@@ -45,7 +46,7 @@ public class Test {
                     "\n7.  (FR7) |   View highest scorers" +
                     "\n8.  (FR8) |   View overall lowest scorer" +
                     "\n9.  (FR9) |   View retake students" +
-                    "\n10. (FR10)|   View list of resit student for individiual components" +
+                    "\n10. (FR10)|   View list of resit student for individual components" +
                     "\n11. (FR11)|   Display horizontal histogram" +
                     "\n12. (FR12)|   Display vertical histogram" +
                     "\n");
@@ -94,8 +95,8 @@ public class Test {
                     }
                     break;
                 case 2:
-                    System.out.println("Class average for In-Class Test 01: " + seBatch.getIct01ClassAvg());
-                    System.out.println("Class average for In-Class Test 02: " + seBatch.getIct02ClassAvg());
+                    System.out.println("Class average for In-Class Main 01: " + seBatch.getIct01ClassAvg());
+                    System.out.println("Class average for In-Class Main 02: " + seBatch.getIct02ClassAvg());
                     System.out.println("Class average for Group Coursework 01: " + seBatch.getGroupCW01ClassAvg());
                     System.out.println("Class average for Group Coursework 02: " + seBatch.getGroupCW02ClassAvg());
                     break;
@@ -111,63 +112,53 @@ public class Test {
                 case 5:
                     System.out.println("\nList of students whose total module marks fall below class average");
                     for (Student std : seBatch.getStdsBelowOverallClassAvg()) {
-                        System.out.println("Student Registration Number: " + std.getRegNo());
-                        System.out.println("Student Name: " + std.getFName() + " " + std.getLName());
-                        System.out.println("Student Overall Marks: " + std.getOverallMarks());
-                        System.out.println();
+                        std.printStudentDetails();
                     }
                     break;
                 case 6:
                     System.out.println("\nList of students who total module marks fall above class average");
                     for (Student std : seBatch.getStdsAboveOverallClassAvg()) {
-                        System.out.println("Student Registration Number: " + std.getRegNo());
-                        System.out.println("Student Name: " + std.getFName() + " " + std.getLName());
-                        System.out.println("Student Overall Marks: " + std.getOverallMarks());
-                        System.out.println();
+                        std.printStudentDetails();
                     }
                     break;
                 case 7:
+
                     Student ict01Highest = seBatch.getIct01HighestScorer();
                     Student ict02Highest = seBatch.getIct02HighestScorer();
                     Student groupCw01Highest = seBatch.getGroupCW01HighestScorer();
                     Student groupCw02Highest = seBatch.getGroupCW02HighestScorer();
+                    Student overallHighest = seBatch.getOverallHighestScorer();
 
                     System.out.println("Highest scorer for Ict 01\n");
-                    System.out.println("Student Registration Number: " + ict01Highest.getRegNo());
-                    System.out.println("Student Name: " + ict01Highest.getFName() + " " + ict01Highest.getLName());
+                    ict01Highest.printStudentDetails();
                     System.out.println("Student Marks for Ict 01: " + ict01Highest.getIct01Marks());
 
                     System.out.println("Highest scorer for Ict 02\n");
-                    System.out.println("Student Registration Number: " + ict02Highest.getRegNo());
-                    System.out.println("Student Name: " + ict02Highest.getFName() + " " + ict02Highest.getLName());
-                    System.out.println("Student Marks for Ict 01: " + ict02Highest.getIct02Marks());
+                    ict02Highest.printStudentDetails();
+                    System.out.println("Student Marks for Ict 02: " + ict02Highest.getIct02Marks());
 
                     System.out.println("Highest scorer for Group Coursework 1\n");
-                    System.out.println("Student Registration Number: " + groupCw01Highest.getRegNo());
-                    System.out.println("Student Name: " + groupCw01Highest.getFName() + " " + groupCw01Highest.getLName());
-                    System.out.println("Student Marks for Ict 01: " + groupCw01Highest.getGroupCW02Marks());
+                    groupCw01Highest.printStudentDetails();
+                    System.out.println("Student Marks for Group Coursework 1: " + groupCw01Highest.getGroupCW02Marks());
 
                     System.out.println("Highest scorer for Group Coursework 2\n");
-                    System.out.println("Student Registration Number: " + groupCw02Highest.getRegNo());
-                    System.out.println("Student Name: " + groupCw02Highest.getFName() + " " + groupCw02Highest.getLName());
-                    System.out.println("Student Marks for Ict 01: " + groupCw02Highest.getGroupCW02Marks());
+                    groupCw02Highest.printStudentDetails();
+                    System.out.println("Student Marks for Group Coursework 2: " + groupCw02Highest.getGroupCW02Marks());
 
+                    System.out.println("Highest scorer for Overall Module\n");
+                    overallHighest.printStudentDetails();
+                    System.out.println("Student overall module marks: "+overallHighest.getOverallMarks());
 
                     break;
                 case 8:
                     Student overallLowest = seBatch.getOverallLowestScorer();
-                    System.out.println("Student Registration Number: " + overallLowest.getRegNo());
-                    System.out.println("Student Name: " + overallLowest.getFName() + " " + overallLowest.getLName());
-                    System.out.println("Student Overall Marks: " + overallLowest.getOverallMarks());
+                    overallLowest.printStudentDetails();
                     break;
                 case 9:
                     if (seBatch.getListOfRetakeStudents().size() == 0) System.out.println("No retake students");
                     else {
                         for (Student std : seBatch.getListOfRetakeStudents()) {
-                            System.out.println("Student Registration Number: " + std.getRegNo());
-                            System.out.println("Student Name: " + std.getFName() + " " + std.getLName());
-                            System.out.println("Student Overall Marks: " + std.getOverallMarks());
-                            System.out.println();
+                            std.printStudentDetails();
                         }
                     }
                     break;
@@ -176,10 +167,8 @@ public class Test {
                     else {
                         System.out.println("\nList of Resit students for ICT\n");
                         for (Student std : seBatch.getListOfIctResits()) {
-                            System.out.println("Student Registration Number: " + std.getRegNo());
-                            System.out.println("Student Name: " + std.getFName() + " " + std.getLName());
+                            std.printStudentDetails();
                             System.out.println("Student ICT Total Marks: " + (std.getIct01Marks()) + std.getIct02Marks());
-                            System.out.println();
                         }
                     }
 
@@ -189,10 +178,8 @@ public class Test {
                     else {
                         System.out.println("\nList of Resit students for Group CW 01\n");
                         for (Student std : seBatch.getListOfGroupCW01Resits()) {
-                            System.out.println("Student Registration Number: " + std.getRegNo());
-                            System.out.println("Student Name: " + std.getFName() + " " + std.getLName());
+                            std.printStudentDetails();
                             System.out.println("Student Group CW 01 Marks: " + std.getGroupCW01Marks());
-                            System.out.println();
                         }
                     }
 
@@ -201,8 +188,7 @@ public class Test {
                     else {
                         System.out.println("\nList of Resit students for Group CW 02\n");
                         for (Student std : seBatch.getListOfGroupCW01Resits()) {
-                            System.out.println("Student Registration Number: " + std.getRegNo());
-                            System.out.println("Student Name: " + std.getFName() + " " + std.getLName());
+                            std.printStudentDetails();
                             System.out.println("Student Group CW 02 Marks: " + std.getGroupCW02Marks());
                         }
                     }
@@ -222,8 +208,7 @@ public class Test {
                     System.out.println("Invalid input");
                 } else break;
             }
-            if (userOpt2 == '0') continue;
-            else if (userOpt2 == 'X') break;
+            if (userOpt2 == 'X') break;
         }
     }
 }

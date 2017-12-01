@@ -24,21 +24,50 @@ public class Student implements Comparable<Student> {
     private List<Component> toResit = new ArrayList<Component>();
 
 
-    public Student(InputForm paramForm) {
-
+    public Student(InputForm inputForm) {
         super();
-        this.regNo = paramForm.getRegNo();
-        this.fName = paramForm.getFName();
-        this.lName = paramForm.getLName();
+        this.regNo = inputForm.getRegNo();
+        this.fName = inputForm.getFName();
+        this.lName = inputForm.getLName();
 
-        this.ict01Marks = paramForm.getIct01Marks();
-        this.ict02Marks = paramForm.getIct02Marks();
+        this.ict01Marks = inputForm.getIct01Marks();
+        this.ict02Marks = inputForm.getIct02Marks();
 
-        this.groupCW01Marks = paramForm.getGroupCw01Marks();
-        this.groupCW02Marks = paramForm.getGroupCw02Marks();
+        this.groupCW01Marks = inputForm.getGroupCw01Marks();
+        this.groupCW02Marks = inputForm.getGroupCw02Marks();
         this.overallMarks = setOverallMarks();
         this.overallGrade = setOverallGrade();
+    }
 
+    private int setOverallMarks() {
+        overallMarks = (int) (this.ict01Marks * 0.2 + this.ict02Marks * 0.2 +
+                this.groupCW01Marks * 0.3 + this.groupCW02Marks * 0.3);
+        return overallMarks;
+    }
+
+    private Grade setOverallGrade() {
+        if (overallMarks < 30) overallGrade = Grade.F_Retake;
+        else if (overallMarks < 40) {
+            overallGrade = Grade.F_Resit;
+            if (((ict01Marks + ict02Marks) / 2) < 40) toResit.add(Component.Ict);
+            if (groupCW01Marks < 40) toResit.add(Component.GroupCw01);
+            if (groupCW02Marks < 40) toResit.add(Component.GroupCw02);
+
+        } else if ((ict01Marks + ict02Marks) / 2 < 30 || groupCW01Marks < 30 || groupCW02Marks < 30) {
+            overallGrade = Grade.F_Resit;
+            if (((ict01Marks + ict02Marks) / 2) < 30) toResit.add(Component.Ict);
+            if (groupCW01Marks < 30) toResit.add(Component.GroupCw01);
+            if (groupCW02Marks < 30) toResit.add(Component.GroupCw02);
+        } else {
+            if (overallMarks >= 70) overallGrade = Grade.FC;
+
+            else if (overallMarks >= 60) overallGrade = Grade.SUC;
+
+            else if (overallMarks >= 50) overallGrade = Grade.SLC;
+
+            else overallGrade = Grade.P;
+        }
+        return overallGrade;
     }
 
     public String getRegNo() {
@@ -69,57 +98,23 @@ public class Student implements Comparable<Student> {
         return groupCW02Marks;
     }
 
-    private int setOverallMarks() {
-
-        overallMarks = (int) (this.ict01Marks * 0.2 + this.ict02Marks * 0.2 +
-                this.groupCW01Marks * 0.3 + this.groupCW02Marks * 0.3);
-        return overallMarks;
-    }
-
     public int getOverallMarks() {
         return overallMarks;
-    }
-
-    private Grade setOverallGrade() {
-
-        if (overallMarks < 30) overallGrade = Grade.F_Retake;
-        else if (overallMarks >= 40 && ((ict01Marks + ict02Marks) / 2) >= 30 && groupCW01Marks >= 30 &&
-                groupCW02Marks >= 30) {
-
-            if (overallMarks >= 70) overallGrade = Grade.FC;
-
-            else if (overallMarks >= 60) overallGrade = Grade.SUC;
-
-            else if (overallMarks >= 50) overallGrade = Grade.SLC;
-
-            else overallGrade = Grade.P;
-
-        } else if ((overallMarks >= 40) && ((ict01Marks + ict02Marks) / 2) < 30 || groupCW01Marks < 30 ||
-                groupCW02Marks < 30) {
-
-            overallGrade = Grade.F_Resit;
-            if(((ict01Marks+ict02Marks)/2)<30) toResit.add(Component.Ict);
-            if(groupCW01Marks<30) toResit.add(Component.GroupCw01);
-            if(groupCW02Marks<30) toResit.add(Component.GroupCw02);
-
-        } else if ((overallMarks >= 30 && overallMarks < 40)){
-            overallGrade = Grade.F_Resit;
-            if(((ict01Marks+ict02Marks)/2)<40) toResit.add(Component.Ict);
-            if(groupCW01Marks<40) toResit.add(Component.GroupCw01);
-            if(groupCW02Marks<40) toResit.add(Component.GroupCw02);
-
-        }
-
-
-        return overallGrade;
     }
 
     public Grade getOverallGrade() {
         return overallGrade;
     }
 
-    public List<Component> getToResit(){
+    public List<Component> getToResit() {
         return toResit;
+    }
+
+    public void printStudentDetails() {
+        System.out.println("REGISTRATION NUMBER: " + this.getFName() +
+                "\nNAME: " + this.getFName() + " " + this.getLName() +
+                "\nOVERALL MARKS: " + this.getOverallMarks() +
+                "\nOVERALL GRADE: " + this.getOverallGrade());
     }
 
     @Override
