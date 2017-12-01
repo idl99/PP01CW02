@@ -187,6 +187,7 @@ public class Main {
                             "for Group CW 02");
                     else {
                         System.out.println("\nList of Resit students for Group CW 02\n");
+
                         for (Student std : seBatch.getListOfGroupCW01Resits()) {
                             std.printStudentDetails();
                             System.out.println("Student Group CW 02 Marks: " + std.getGroupCW02Marks());

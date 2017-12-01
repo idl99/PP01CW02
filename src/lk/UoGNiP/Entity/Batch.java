@@ -216,6 +216,12 @@ public class Batch {
         for (Student std : list_Of_Students) {
             if (std.getOverallGrade() != Grade.F_Retake && std.getToResit().contains(Component.Ict)) listOfStd.add(std);
         }
+        listOfStd.sort(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.getLName().compareTo(o2.getLName());
+            }
+        });
         return listOfStd;
     }
 
@@ -225,6 +231,12 @@ public class Batch {
             if (std.getOverallGrade() != Grade.F_Retake && std.getToResit().contains(Component.GroupCw01))
                 listOfStd.add(std);
         }
+        listOfStd.sort(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.getLName().compareTo(o2.getLName());
+            }
+        });
         return listOfStd;
     }
 
@@ -234,6 +246,12 @@ public class Batch {
             if (std.getOverallGrade() != Grade.F_Retake && std.getToResit().contains(Component.GroupCw02))
                 listOfStd.add(std);
         }
+        listOfStd.sort(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.getLName().compareTo(o2.getLName());
+            }
+        });
         return listOfStd;
     }
 
