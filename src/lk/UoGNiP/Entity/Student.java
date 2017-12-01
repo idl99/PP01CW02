@@ -46,26 +46,26 @@ public class Student implements Comparable<Student> {
     }
 
     private Grade setOverallGrade() {
-        if (overallMarks < 30) overallGrade = Grade.F_Retake;
+        if (overallMarks < 30) overallGrade = Grade.Fail_Retake;
         else if (overallMarks < 40) {
-            overallGrade = Grade.F_Resit;
+            overallGrade = Grade.Fail_Resit;
             if (((ict01Marks + ict02Marks) / 2) < 40) toResit.add(Component.Ict);
             if (groupCW01Marks < 40) toResit.add(Component.GroupCw01);
             if (groupCW02Marks < 40) toResit.add(Component.GroupCw02);
 
         } else if ((ict01Marks + ict02Marks) / 2 < 30 || groupCW01Marks < 30 || groupCW02Marks < 30) {
-            overallGrade = Grade.F_Resit;
+            overallGrade = Grade.Fail_Resit;
             if (((ict01Marks + ict02Marks) / 2) < 30) toResit.add(Component.Ict);
             if (groupCW01Marks < 30) toResit.add(Component.GroupCw01);
             if (groupCW02Marks < 30) toResit.add(Component.GroupCw02);
         } else {
-            if (overallMarks >= 70) overallGrade = Grade.FC;
+            if (overallMarks >= 70) overallGrade = Grade.First_Class;
 
-            else if (overallMarks >= 60) overallGrade = Grade.SUC;
+            else if (overallMarks >= 60) overallGrade = Grade.Second_Upper_Class;
 
-            else if (overallMarks >= 50) overallGrade = Grade.SLC;
+            else if (overallMarks >= 50) overallGrade = Grade.Second_Lower_Class;
 
-            else overallGrade = Grade.P;
+            else overallGrade = Grade.General_Pass;
         }
         return overallGrade;
     }
