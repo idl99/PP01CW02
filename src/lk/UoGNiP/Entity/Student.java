@@ -106,7 +106,7 @@ public class Student implements Comparable<Student> {
     }
 
     public void printStudentDetails() {
-        System.out.println("REGISTRATION NUMBER: " + this.getFName() +
+        System.out.println("REGISTRATION NUMBER: " + this.getRegNo() +
                 "\nNAME: " + this.getFName() + " " + this.getLName() +
                 "\nOVERALL MARKS: " + this.getOverallMarks() +
                 "\nOVERALL GRADE: " + this.getOverallGrade());

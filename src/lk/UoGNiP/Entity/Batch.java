@@ -209,10 +209,10 @@ public class Batch {
     }
 
     public Student getOverallLowestScorer() {
-        int min = list_Of_Students.get(0).getOverallMarks();
+        int min = 100;
         Student lowestScorer = null;
         for (Student student : this.list_Of_Students) {
-            if (student.getIct01Marks() < min) {
+            if (student.getOverallMarks() < min) {
                 lowestScorer = student;
                 min = lowestScorer.getOverallMarks();
             }
