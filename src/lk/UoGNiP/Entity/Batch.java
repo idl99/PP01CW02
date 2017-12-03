@@ -197,7 +197,7 @@ public class Batch {
     }
 
     public Student getOverallHighestScorer() {
-        int max = list_Of_Students.get(0).getOverallMarks();
+        int max = 0;
         Student highestScorer = null;
         for (Student student : this.list_Of_Students) {
             if (student.getIct01Marks() > max) {

@@ -1,3 +1,4 @@
+import lk.UoGNiP.Data.Component;
 import lk.UoGNiP.Entity.Student;
 import lk.UoGNiP.Entity.Batch;
 
@@ -24,14 +25,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Batch seBatch = null;
-
         Scanner sc = new Scanner(System.in);
         int userOpt = 0;
-        char userOpt2 = '\u0000';
+        char userOpt2 = '\0';
 
         while (true) {
-
+            Batch seBatch = new Batch(listOfStudents);
             System.out.println("" +
                     "==================================================" +
                     "\nWELCOME TO UoG NiP Student Report System for PP01" +
@@ -68,13 +67,9 @@ public class Main {
 
 
             if (userOpt == 0) break;
-            else if (userOpt > 1) {
-                if (!checkIfStudent(listOfStudents)) {
-                    if (!checkIfStudent(listOfStudents)) {
-                        System.out.println("No students added yet...\n");
-                        continue;
-                    }
-                }
+            else if (!checkIfStudent(listOfStudents) && userOpt > 1) {
+                System.out.println("No students added yet...\n");
+                continue;
             }
 
 
@@ -85,6 +80,10 @@ public class Main {
                         Student obj = new Student(form);
                         listOfStudents.add(obj);
                         obj.printStudentDetails();
+                        if(obj.getToResit().size()!=0) {
+                            System.out.println("COMPONENTS TO RESIT");
+                            for (Component component : obj.getToResit()) System.out.println(component);
+                        }
                         System.out.println("Successfully added details of " + obj.getRegNo());
                         System.out.println("Do you wish to enter details of any more students? " +
                                 "[y]es or [n]o :");
@@ -123,30 +122,29 @@ public class Main {
                     }
                     break;
                 case 7:
-
                     Student ict01Highest = seBatch.getIct01HighestScorer();
                     Student ict02Highest = seBatch.getIct02HighestScorer();
                     Student groupCw01Highest = seBatch.getGroupCW01HighestScorer();
                     Student groupCw02Highest = seBatch.getGroupCW02HighestScorer();
                     Student overallHighest = seBatch.getOverallHighestScorer();
 
-                    System.out.println("Highest scorer for Ict 01\n");
+                    System.out.println("\nHighest scorer for Ict 01");
                     ict01Highest.printStudentDetails();
                     System.out.println("Student Marks for Ict 01: " + ict01Highest.getIct01Marks());
 
-                    System.out.println("Highest scorer for Ict 02\n");
+                    System.out.println("\nHighest scorer for Ict 02");
                     ict02Highest.printStudentDetails();
                     System.out.println("Student Marks for Ict 02: " + ict02Highest.getIct02Marks());
 
-                    System.out.println("Highest scorer for Group Coursework 1\n");
+                    System.out.println("\nHighest scorer for Group Coursework 1");
                     groupCw01Highest.printStudentDetails();
                     System.out.println("Student Marks for Group Coursework 1: " + groupCw01Highest.getGroupCW02Marks());
 
-                    System.out.println("Highest scorer for Group Coursework 2\n");
+                    System.out.println("\nHighest scorer for Group Coursework 2");
                     groupCw02Highest.printStudentDetails();
                     System.out.println("Student Marks for Group Coursework 2: " + groupCw02Highest.getGroupCW02Marks());
 
-                    System.out.println("Highest scorer for Overall Module\n");
+                    System.out.println("\nHighest scorer for Overall Module");
                     overallHighest.printStudentDetails();
                     System.out.println("Student overall module marks: "+overallHighest.getOverallMarks());
 
