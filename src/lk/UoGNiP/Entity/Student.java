@@ -45,27 +45,22 @@ public class Student implements Comparable<Student> {
         return overallMarks;
     }
 
-    private Grade setOverallGrade() {
-        if (overallMarks < 30) overallGrade = Grade.Fail_Retake;
-        else if (overallMarks < 40) {
-            overallGrade = Grade.Fail_Resit;
-            if (((ict01Marks + ict02Marks) / 2) < 40) toResit.add(Component.Ict);
-            if (groupCW01Marks < 40) toResit.add(Component.GroupCw01);
-            if (groupCW02Marks < 40) toResit.add(Component.GroupCw02);
-
-        } else if ((ict01Marks + ict02Marks) / 2 < 30 || groupCW01Marks < 30 || groupCW02Marks < 30) {
-            overallGrade = Grade.Fail_Resit;
-            if (((ict01Marks + ict02Marks) / 2) < 30) toResit.add(Component.Ict);
-            if (groupCW01Marks < 30) toResit.add(Component.GroupCw01);
-            if (groupCW02Marks < 30) toResit.add(Component.GroupCw02);
-        } else {
+    private Grade setOverallGrade(){
+        if(overallMarks>=40 && (ict01Marks+ict02Marks)/2 >=30 && groupCW01Marks >=30 && groupCW02Marks ==30){
             if (overallMarks >= 70) overallGrade = Grade.First_Class;
-
-            else if (overallMarks >= 60) overallGrade = Grade.Second_Upper_Class;
-
-            else if (overallMarks >= 50) overallGrade = Grade.Second_Lower_Class;
-
+            else if (overallMarks >= 60) overallGrade = Grade.Second_Class_Upper;
+            else if (overallMarks >= 50) overallGrade = Grade.Second_Class_Lower;
             else overallGrade = Grade.General_Pass;
+        }
+        else if(overallMarks<30) overallGrade = Grade.Fail_Retake;
+        else {
+            overallGrade = Grade.Resit;
+            if ((overallMarks >= 40 && (ict01Marks+ict02Marks)/2<30)||
+                    (overallMarks<40 && (ict01Marks+ict02Marks)/2<40)) toResit.add(Component.Ict);
+            if ((overallMarks >= 40 && groupCW01Marks<30)||
+                    (overallMarks < 40 && groupCW01Marks < 40)) toResit.add(Component.GroupCw01);
+            if ((overallMarks >= 40 && groupCW02Marks<30)||
+                    (overallMarks < 40 && groupCW02Marks < 40)) toResit.add(Component.GroupCw02);
         }
         return overallGrade;
     }
