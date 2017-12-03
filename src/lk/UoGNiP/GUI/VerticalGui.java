@@ -22,7 +22,7 @@ public class VerticalGui extends JFrame{
         headersPanel.setLayout(new GridLayout(1,4));
         JLabel marksHeader1 = new JLabel("0-29");
         JLabel marksHeader2 = new JLabel("30-39");
-        JLabel marksHeader3 = new JLabel("49-69");
+        JLabel marksHeader3 = new JLabel("40-69");
         JLabel marksHeader4 = new JLabel("70-100");
         headersPanel.add(marksHeader1);
         headersPanel.add(marksHeader2);
