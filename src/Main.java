@@ -84,6 +84,7 @@ public class Main {
                         InputForm form = new InputForm();
                         Student obj = new Student(form);
                         listOfStudents.add(obj);
+                        obj.printStudentDetails();
                         System.out.println("Successfully added details of " + obj.getRegNo());
                         System.out.println("Do you wish to enter details of any more students? " +
                                 "[y]es or [n]o :");

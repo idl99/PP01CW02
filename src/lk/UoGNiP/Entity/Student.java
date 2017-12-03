@@ -25,7 +25,7 @@ public class Student implements Comparable<Student> {
 
 
     public Student(InputForm inputForm) {
-        super();
+
         this.regNo = inputForm.getRegNo();
         this.fName = inputForm.getFName();
         this.lName = inputForm.getLName();
@@ -46,7 +46,7 @@ public class Student implements Comparable<Student> {
     }
 
     private Grade setOverallGrade(){
-        if(overallMarks>=40 && (ict01Marks+ict02Marks)/2 >=30 && groupCW01Marks >=30 && groupCW02Marks ==30){
+        if(overallMarks>=40 && (ict01Marks+ict02Marks)/2 >=30 && groupCW01Marks >=30 && groupCW02Marks >=30){
             if (overallMarks >= 70) overallGrade = Grade.First_Class;
             else if (overallMarks >= 60) overallGrade = Grade.Second_Class_Upper;
             else if (overallMarks >= 50) overallGrade = Grade.Second_Class_Lower;
