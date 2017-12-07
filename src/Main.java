@@ -235,7 +235,7 @@ public class Main {
                     else {
                         System.out.println("\nList of Resit students for Group CW 02\n");
 
-                        for (Student std : seBatch.getListOfGroupCW01Resits()) {
+                        for (Student std : seBatch.getListOfGroupCW02Resits()) {
                             std.printStudentDetails();
                             System.out.println("Student Group CW 02 Marks: " + std.getGroupCW02Marks());
                         }
