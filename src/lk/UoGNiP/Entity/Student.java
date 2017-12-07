@@ -4,10 +4,11 @@ import lk.UoGNiP.Data.Component;
 import lk.UoGNiP.Data.Grade;
 import lk.UoGNiP.Data.InputForm;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student implements Comparable<Student> {
+public class Student implements Comparable<Student>, Serializable {
 
     private String regNo;
     private String fName;

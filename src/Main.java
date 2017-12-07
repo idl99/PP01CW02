@@ -7,6 +7,8 @@ import lk.UoGNiP.Data.InputForm;
 import lk.UoGNiP.GUI.HorizontalGui;
 import lk.UoGNiP.GUI.VerticalGui;
 
+import java.io.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,13 +17,6 @@ import java.util.Scanner;
 public class Main {
 
     public static List<Student> listOfStudents = new ArrayList<>();
-
-    public static boolean checkIfStudent(List<Student> param) {
-        if (param.size() == 0) {
-            return false;
-        }
-        return true;
-    }
 
     public static void main(String[] args) {
 
@@ -67,10 +62,39 @@ public class Main {
 
 
             if (userOpt == 0) break;
-            else if (!checkIfStudent(listOfStudents) && userOpt > 1) {
-                System.out.println("No students added yet...\n");
-                continue;
+
+            FileInputStream fis = null;
+            ObjectInputStream ois = null;
+
+            try {
+
+                fis = new FileInputStream(new File("Students.txt"));
+                ois = new ObjectInputStream(fis);
+
+                listOfStudents = (ArrayList<Student>)ois.readObject();
+                seBatch = new Batch(listOfStudents);
+
+            } catch (FileNotFoundException e) {
+                if(userOpt>1) {
+                    System.out.println("No students added yet");
+                    continue;
+                }
+            } catch (IOException e){
+                e.printStackTrace();
+            } catch (ClassNotFoundException e){
+                e.printStackTrace();
             }
+            finally {
+                try{
+                    ois.close();
+                    fis.close();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }catch (NullPointerException e){
+                    e.printStackTrace();
+                }
+            }
+
 
 
             switch (userOpt) {
@@ -88,8 +112,31 @@ public class Main {
                         System.out.println("Do you wish to enter details of any more students? " +
                                 "[y]es or [n]o :");
                         char userChoice = sc.next().toUpperCase().charAt(0);
+
                         if (userChoice == 'N') {
-                            seBatch = new Batch(listOfStudents);
+
+                            FileOutputStream fos = null;
+                            ObjectOutputStream oos = null;
+
+                            try {
+                                fos = new FileOutputStream(new File("Students.txt"));
+                                oos = new ObjectOutputStream(fos);
+
+                                oos.writeObject(listOfStudents);
+
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            } catch (IOException e){
+                                e.printStackTrace();
+                            }
+                            finally {
+                                try{
+                                    oos.close();
+                                    fos.close();
+                                }catch (IOException e){
+                                    e.printStackTrace();
+                                }
+                            }
                             break;
                         }
                     }
@@ -167,7 +214,8 @@ public class Main {
                         System.out.println("\nList of Resit students for ICT\n");
                         for (Student std : seBatch.getListOfIctResits()) {
                             std.printStudentDetails();
-                            System.out.println("Student ICT Total Marks: " + (std.getIct01Marks()) + std.getIct02Marks());
+                            System.out.println("Student ICT Total Marks: " + (std.getIct01Marks()) +
+                                    " "+std.getIct02Marks());
                         }
                     }
 

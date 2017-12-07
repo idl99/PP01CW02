@@ -14,24 +14,7 @@ public class Batch {
         this.list_Of_Students = paramListOfStudents;
 
     }
-/*
-    public void displayClassAverages(){
-        double ict01Total = 0.0, ict02Total = 0.0, groupCw01Total = 0.0,
-                groupCw02Total = 0.0, overallTotal = 0.0;
-        for(Student std: list_Of_Students){
-            ict01Total += std.getIct01Marks();
-            ict02Total += std.getIct02Marks();
-            groupCw01Total += std.getGroupCW01Marks();
-            groupCw02Total += std.getGroupCW02Marks();
-            overallTotal += std.getOverallMarks();
-        }
-        System.out.println("CLASS AVERAGE FOR ICT 1:"+(ict01Total/list_Of_Students.size()));
-        System.out.println("CLASS AVERAGE FOR ICT 2:"+(ict02Total/list_Of_Students.size()));
-        System.out.println("CLASS AVERAGE FOR GROUP CW 01:"+(groupCw01Total/list_Of_Students.size()));
-        System.out.println("CLASS AVERAGE FOR GROUP CW 02:"+(groupCw02Total/list_Of_Students.size()));
-        System.out.println("CLASS OVERALL MODULE AVERAGE:"+(overallTotal/list_Of_Students.size()));
-    }
-*/
+
     public double getIct01ClassAvg() {
         double ict01ClassAvg;
         double total = 0.0;
@@ -93,7 +76,7 @@ public class Batch {
     }
 
     public int numOfIct01MarksBelow30() {
-        List<Student> listOfStd = new ArrayList<Student>();
+        List<Student> listOfStd = new ArrayList<>();
         for (Student std : list_Of_Students) {
             if (std.getIct01Marks() < 30) listOfStd.add(std);
         }
@@ -101,7 +84,7 @@ public class Batch {
     }
 
     public int numOfIct02MarksBelow30() {
-        List<Student> listOfStd = new ArrayList<Student>();
+        List<Student> listOfStd = new ArrayList<>();
         for (Student std : list_Of_Students) {
             if (std.getIct02Marks() < 30) listOfStd.add(std);
         }
@@ -109,7 +92,7 @@ public class Batch {
     }
 
     public int numOfGroupCw01MarksBelow30() {
-        List<Student> listOfStd = new ArrayList<Student>();
+        List<Student> listOfStd = new ArrayList<>();
         for (Student std : list_Of_Students) {
             if (std.getGroupCW01Marks() < 30) listOfStd.add(std);
         }
@@ -117,7 +100,7 @@ public class Batch {
     }
 
     public int numOfGroupCw02MarksBelow30() {
-        List<Student> listOfStd = new ArrayList<Student>();
+        List<Student> listOfStd = new ArrayList<>();
         for (Student std : list_Of_Students) {
             if (std.getGroupCW02Marks() < 30) listOfStd.add(std);
         }
