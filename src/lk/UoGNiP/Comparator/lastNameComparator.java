@@ -7,6 +7,6 @@ import java.util.Comparator;
 public class lastNameComparator implements Comparator<Student> {
     @Override
     public int compare(Student o1, Student o2) {
-        return o1.getLName().compareTo(o2.getLName());
+        return o2.getLName().compareTo(o1.getLName());
     }
 }
