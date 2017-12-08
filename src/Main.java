@@ -109,34 +109,37 @@ public class Main {
                         System.out.println("Successfully added details of " + obj.getRegNo());
                         System.out.println("Do you wish to enter details of any more students? " +
                                 "[y]es or [n]o :");
-                        char userChoice = sc.next().toUpperCase().charAt(0);
-
-                        if (userChoice == 'N') {
-
-                            FileOutputStream fos = null;
-                            ObjectOutputStream oos = null;
-
-                            try {
-                                fos = new FileOutputStream(new File("Students.txt"));
-                                oos = new ObjectOutputStream(fos);
-
-                                oos.writeObject(listOfStudents);
-
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            } catch (IOException e){
-                                e.printStackTrace();
-                            }
-                            finally {
-                                try{
-                                    oos.close();
-                                    fos.close();
-                                }catch (IOException e){
+                        while (true) {
+                            char userChoice = sc.next().toUpperCase().charAt(0);
+                            if (userChoice == 'N') {
+                                FileOutputStream fos = null;
+                                ObjectOutputStream oos = null;
+                                try {
+                                    fos = new FileOutputStream(new File("Students.txt"));
+                                    oos = new ObjectOutputStream(fos);
+                                    oos.writeObject(listOfStudents);
+                                } catch (FileNotFoundException e) {
+                                    e.printStackTrace();
+                                } catch (IOException e){
                                     e.printStackTrace();
                                 }
+                                finally {
+                                    try{
+                                        oos.close();
+                                        fos.close();
+                                    }catch (IOException e){
+                                        e.printStackTrace();
+                                    }
+
+                                }
+                                break;
+                            } else if(userChoice=='Y') continue;
+                            else {
+                                System.out.println("Invalid Input. Enter Y to enter details of more students" +
+                                        "or N to stop");
                             }
-                            break;
                         }
+                        break;
                     }
                     break;
                 case 2:

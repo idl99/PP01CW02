@@ -1,5 +1,7 @@
 package lk.UoGNiP.Entity;
 
+import lk.UoGNiP.Comparator.lastNameComparator;
+import lk.UoGNiP.Comparator.overallMarkComparator;
 import lk.UoGNiP.Data.Resit;
 import lk.UoGNiP.Data.Grade;
 
@@ -13,6 +15,38 @@ public class Batch {
 
         this.list_Of_Students = paramListOfStudents;
 
+    }
+
+    public void descSort(List<Student> paramList, Comparator<Student> comparator){
+        int length = paramList.size();
+        Student temp = null;
+        for(int i=0; i < length; i++) {
+            for (int j = 1; j < (length - i); j++) {
+                if (comparator.compare(paramList.get(j - 1), paramList.get(j - 1)) < 0){
+                    //swap elements
+                    temp = paramList.get(j - 1);
+                    paramList.set(j - 1, paramList.get(j));
+                    paramList.set(j, temp);
+                }
+            }
+
+        }
+    }
+
+    public void ascSort(List<Student> paramList, Comparator<Student> comparator){
+        int length = paramList.size();
+        Student temp = null;
+        for(int i=0; i < length; i++) {
+            for (int j = 1; j < (length - i); j++) {
+                if (comparator.compare(paramList.get(j - 1), paramList.get(j - 1)) > 0){
+                    //swap elements
+                    temp = paramList.get(j - 1);
+                    paramList.set(j - 1, paramList.get(j));
+                    paramList.set(j, temp);
+                }
+            }
+
+        }
     }
 
     public double getIct01ClassAvg() {
@@ -122,6 +156,7 @@ public class Batch {
         for (Student student : this.list_Of_Students) {
             if (student.getOverallMarks() > batchAvg) stdsAboveClassAvg.add(student);
         }
+        ascSort(stdsAboveClassAvg,new overallMarkComparator());
         return stdsAboveClassAvg;
     }
 
@@ -210,6 +245,7 @@ public class Batch {
         for (Student std : list_Of_Students) {
             if (std.getOverallGrade() != Grade.Fail_Retake && std.getToResit().contains(Resit.Resit_Ict)) listOfStd.add(std);
         }
+        descSort(listOfStd, new lastNameComparator());
         return listOfStd;
     }
 
@@ -219,6 +255,7 @@ public class Batch {
             if (std.getOverallGrade() != Grade.Fail_Retake && std.getToResit().contains(Resit.Resit_GroupCw01))
                 listOfStd.add(std);
         }
+        descSort(listOfStd, new lastNameComparator());
         return listOfStd;
     }
 
@@ -228,6 +265,7 @@ public class Batch {
             if (std.getOverallGrade() != Grade.Fail_Retake && std.getToResit().contains(Resit.Resit_GroupCw02))
                 listOfStd.add(std);
         }
+        descSort(listOfStd, new lastNameComparator());
         return listOfStd;
     }
 
