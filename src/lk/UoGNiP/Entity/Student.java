@@ -1,6 +1,6 @@
 package lk.UoGNiP.Entity;
 
-import lk.UoGNiP.Data.Component;
+import lk.UoGNiP.Data.Resit;
 import lk.UoGNiP.Data.Grade;
 import lk.UoGNiP.Data.InputForm;
 
@@ -24,7 +24,7 @@ public class Student implements Serializable {
     private int overallMarks;
     private Grade overallGrade;
 
-    private List<Component> toResit = new ArrayList<Component>();
+    private List<Resit> toResit = new ArrayList<Resit>();
 
 
     public Student(InputForm inputForm) {
@@ -59,11 +59,11 @@ public class Student implements Serializable {
         else {
             overallGrade = Grade.Resit;
             if ((overallMarks >= 40 && (ict01Marks+ict02Marks)/2<30)||
-                    (overallMarks<40 && (ict01Marks+ict02Marks)/2<40)) toResit.add(Component.Ict);
+                    (overallMarks<40 && (ict01Marks+ict02Marks)/2<40)) toResit.add(Resit.Resit_Ict);
             if ((overallMarks >= 40 && groupCW01Marks<30)||
-                    (overallMarks < 40 && groupCW01Marks < 40)) toResit.add(Component.GroupCw01);
+                    (overallMarks < 40 && groupCW01Marks < 40)) toResit.add(Resit.Resit_GroupCw01);
             if ((overallMarks >= 40 && groupCW02Marks<30)||
-                    (overallMarks < 40 && groupCW02Marks < 40)) toResit.add(Component.GroupCw02);
+                    (overallMarks < 40 && groupCW02Marks < 40)) toResit.add(Resit.Resit_GroupCw02);
         }
         return overallGrade;
     }
@@ -104,7 +104,7 @@ public class Student implements Serializable {
         return overallGrade;
     }
 
-    public List<Component> getToResit() {
+    public List<Resit> getToResit() {
         return toResit;
     }
 

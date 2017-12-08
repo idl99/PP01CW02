@@ -1,6 +1,6 @@
 package lk.UoGNiP.Entity;
 
-import lk.UoGNiP.Data.Component;
+import lk.UoGNiP.Data.Resit;
 import lk.UoGNiP.Data.Grade;
 
 import java.util.*;
@@ -208,7 +208,7 @@ public class Batch {
     public List<Student> getListOfIctResits() {
         List<Student> listOfStd = new ArrayList<>();
         for (Student std : list_Of_Students) {
-            if (std.getOverallGrade() != Grade.Fail_Retake && std.getToResit().contains(Component.Ict)) listOfStd.add(std);
+            if (std.getOverallGrade() != Grade.Fail_Retake && std.getToResit().contains(Resit.Resit_Ict)) listOfStd.add(std);
         }
         return listOfStd;
     }
@@ -216,7 +216,7 @@ public class Batch {
     public List<Student> getListOfGroupCW01Resits() {
         List<Student> listOfStd = new ArrayList<>();
         for (Student std : list_Of_Students) {
-            if (std.getOverallGrade() != Grade.Fail_Retake && std.getToResit().contains(Component.GroupCw01))
+            if (std.getOverallGrade() != Grade.Fail_Retake && std.getToResit().contains(Resit.Resit_GroupCw01))
                 listOfStd.add(std);
         }
         return listOfStd;
@@ -225,7 +225,7 @@ public class Batch {
     public List<Student> getListOfGroupCW02Resits() {
         List<Student> listOfStd = new ArrayList<>();
         for (Student std : list_Of_Students) {
-            if (std.getOverallGrade() != Grade.Fail_Retake && std.getToResit().contains(Component.GroupCw02))
+            if (std.getOverallGrade() != Grade.Fail_Retake && std.getToResit().contains(Resit.Resit_GroupCw02))
                 listOfStd.add(std);
         }
         return listOfStd;

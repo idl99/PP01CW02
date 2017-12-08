@@ -1,4 +1,4 @@
-import lk.UoGNiP.Data.Component;
+import lk.UoGNiP.Data.Resit;
 import lk.UoGNiP.Data.InputForm;
 
 import lk.UoGNiP.Entity.Student;
@@ -104,7 +104,7 @@ public class Main {
                         obj.printStudentDetails();
                         if(obj.getToResit().size()!=0) {
                             System.out.println("COMPONENTS TO RESIT");
-                            for (Component component : obj.getToResit()) System.out.println(component);
+                            for (Resit resit : obj.getToResit()) System.out.println(resit);
                         }
                         System.out.println("Successfully added details of " + obj.getRegNo());
                         System.out.println("Do you wish to enter details of any more students? " +
