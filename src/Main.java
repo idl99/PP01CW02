@@ -1,8 +1,8 @@
 import lk.UoGNiP.Data.Component;
+import lk.UoGNiP.Data.InputForm;
+
 import lk.UoGNiP.Entity.Student;
 import lk.UoGNiP.Entity.Batch;
-
-import lk.UoGNiP.Data.InputForm;
 
 import lk.UoGNiP.GUI.HorizontalGui;
 import lk.UoGNiP.GUI.VerticalGui;
@@ -63,37 +63,37 @@ public class Main {
 
             if (userOpt == 0) break;
 
-            FileInputStream fis = null;
-            ObjectInputStream ois = null;
+            else if (userOpt>1 && new File("Students.txt").exists()) {
+                FileInputStream fis = null;
+                ObjectInputStream ois = null;
 
-            try {
+                try {
 
-                fis = new FileInputStream(new File("Students.txt"));
-                ois = new ObjectInputStream(fis);
+                    fis = new FileInputStream(new File("Students.txt"));
+                    ois = new ObjectInputStream(fis);
 
-                listOfStudents = (ArrayList<Student>)ois.readObject();
-                seBatch = new Batch(listOfStudents);
+                    listOfStudents = (ArrayList<Student>) ois.readObject();
+                    seBatch = new Batch(listOfStudents);
 
-            } catch (FileNotFoundException e) {
-                if(userOpt>1) {
-                    System.out.println("No students added yet");
-                    continue;
+                } catch (FileNotFoundException e) {
+                    if (userOpt > 1) {
+                        System.out.println("No students added yet");
+                        continue;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e){
-                e.printStackTrace();
-            } catch (ClassNotFoundException e){
-                e.printStackTrace();
-            } try{
-                ois.close();
-                fis.close();
-            }catch (IOException e){
-                e.printStackTrace();
-            }catch (NullPointerException e){
-                e.printStackTrace();
+                try {
+                    ois.close();
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
             }
-
-
-
 
             switch (userOpt) {
                 case 1:

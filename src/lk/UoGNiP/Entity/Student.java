@@ -8,7 +8,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student implements Comparable<Student>, Serializable {
+public class Student implements Serializable {
+
+    static final long serialVersionUID=0L;
 
     private String regNo;
     private String fName;
@@ -111,10 +113,5 @@ public class Student implements Comparable<Student>, Serializable {
                 "\nNAME: " + this.getFName() + " " + this.getLName() +
                 "\nOVERALL MARKS: " + this.getOverallMarks() +
                 "\nOVERALL GRADE: " + this.getOverallGrade());
-    }
-
-    @Override
-    public int compareTo(Student o) {
-        return this.overallMarks - o.overallMarks;
     }
 }
