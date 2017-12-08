@@ -83,17 +83,15 @@ public class Main {
                 e.printStackTrace();
             } catch (ClassNotFoundException e){
                 e.printStackTrace();
+            } try{
+                ois.close();
+                fis.close();
+            }catch (IOException e){
+                e.printStackTrace();
+            }catch (NullPointerException e){
+                e.printStackTrace();
             }
-            finally {
-                try{
-                    ois.close();
-                    fis.close();
-                }catch (IOException e){
-                    e.printStackTrace();
-                }catch (NullPointerException e){
-                    e.printStackTrace();
-                }
-            }
+
 
 
 
