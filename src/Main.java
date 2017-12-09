@@ -31,18 +31,18 @@ public class Main {
                     "\nWELCOME TO UoG NiP Student Report System for PP01" +
                     "\n==================================================" +
                     "\n" +
-                    "\n1.  (FR1) |   Enter student details" +
-                    "\n2.  (FR2) |   View class average for individual components" +
-                    "\n3.  (FR3) |   View number of failed students for individual components" +
-                    "\n4.  (FR4) |   View overall class average" +
-                    "\n5.  (FR5) |   View students below class average" +
-                    "\n6.  (FR6) |   View student above class average" +
-                    "\n7.  (FR7) |   View highest scorers" +
-                    "\n8.  (FR8) |   View overall lowest scorer" +
-                    "\n9.  (FR9) |   View retake students" +
-                    "\n10. (FR10)|   View list of resit student for individual components" +
-                    "\n11. (FR11)|   Display horizontal histogram" +
-                    "\n12. (FR12)|   Display vertical histogram" +
+                    "\n1.  |   Enter student details" +
+                    "\n2.  |   View class average for individual components" +
+                    "\n3.  |   View number of failed students for individual components" +
+                    "\n4.  |   View overall class average" +
+                    "\n5.  |   View students below class average" +
+                    "\n6.  |   View student above class average" +
+                    "\n7.  |   View highest scorers" +
+                    "\n8.  |   View overall lowest scorer" +
+                    "\n9.  |   View retake students" +
+                    "\n10. |   View list of resit student for individual components" +
+                    "\n11. |   Display horizontal histogram" +
+                    "\n12. |   Display vertical histogram" +
                     "\n");
 
             do {
