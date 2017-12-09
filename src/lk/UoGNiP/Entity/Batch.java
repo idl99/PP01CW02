@@ -38,7 +38,7 @@ public class Batch {
         double total = 0.0;
 
         for (Student student : this.list_Of_Students) {
-            total += (double) (Integer) student.getIct01Marks();
+            total += (double) student.getIct01Marks();
         }
 
         ict01ClassAvg = total / this.list_Of_Students.size();
@@ -50,7 +50,7 @@ public class Batch {
         double total = 0.0;
 
         for (Student student : this.list_Of_Students) {
-            total += (double) (Integer) student.getIct02Marks();
+            total += (double) student.getIct02Marks();
         }
 
         ict02ClassAvg = total / this.list_Of_Students.size();
@@ -62,7 +62,7 @@ public class Batch {
         double total = 0.0;
 
         for (Student student : this.list_Of_Students) {
-            total += (double) (Integer) student.getGroupCW01Marks();
+            total += (double) student.getGroupCW01Marks();
         }
 
         groupCW01ClassAvg = total / this.list_Of_Students.size();
@@ -74,7 +74,7 @@ public class Batch {
         double total = 0.0;
 
         for (Student student : this.list_Of_Students) {
-            total += (double) (Integer) student.getGroupCW02Marks();
+            total += (double) student.getGroupCW02Marks();
         }
 
         groupCW02ClassAvg = total / this.list_Of_Students.size();
@@ -86,7 +86,7 @@ public class Batch {
         double total = 0.0;
 
         for (Student student : this.list_Of_Students) {
-            total += (double) (Integer) student.getOverallMarks();
+            total += (double) student.getOverallMarks();
         }
 
         overallClassAvg = total / this.list_Of_Students.size();
