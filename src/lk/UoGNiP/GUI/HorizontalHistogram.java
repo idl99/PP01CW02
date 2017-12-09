@@ -10,9 +10,9 @@ import java.awt.*;
 
 // HorizontalGui class which creates an HorizontalGui object
 // Defines the layout for which the Horizontal Histogram is to be displayed
-public class HorizontalGui extends JFrame {
+public class HorizontalHistogram extends JFrame {
 
-    public HorizontalGui(List<Student> paramList){
+    public HorizontalHistogram (List<Student> paramList){
 
         super("My Horizontal Histogram GUI");
         setSize(500,350);

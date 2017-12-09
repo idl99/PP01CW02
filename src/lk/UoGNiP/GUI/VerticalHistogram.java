@@ -7,11 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-// VerticalGui class which creates an VerticalGui object
+// VerticalHistogram class which creates an VerticalHistogram object
 // Defines the layout for which the Vertical Histogram is to be displayed
-public class VerticalGui extends JFrame{
+public class VerticalHistogram extends JFrame{
 
-    public VerticalGui(List<Student> paramList){
+    public VerticalHistogram(List<Student> paramList){
 
         super("My Vertical Histogram GUI");
         setSize(350,500);

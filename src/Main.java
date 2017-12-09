@@ -4,8 +4,8 @@ import lk.UoGNiP.Data.InputForm;
 import lk.UoGNiP.Entity.Student;
 import lk.UoGNiP.Entity.Batch;
 
-import lk.UoGNiP.GUI.HorizontalGui;
-import lk.UoGNiP.GUI.VerticalGui;
+import lk.UoGNiP.GUI.HorizontalHistogram;
+import lk.UoGNiP.GUI.VerticalHistogram;
 
 import java.io.*;
 
@@ -243,10 +243,10 @@ public class Main {
                     }
                     break;
                 case 11:
-                    HorizontalGui hGui = new HorizontalGui(listOfStudents);
+                    HorizontalHistogram hGui = new HorizontalHistogram(listOfStudents);
                     break;
                 case 12:
-                    VerticalGui vGui = new VerticalGui(listOfStudents);
+                    VerticalHistogram vGui = new VerticalHistogram(listOfStudents);
                     break;
             }
 
