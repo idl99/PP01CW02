@@ -13,10 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
+// Main class which links together all other components and their classes together
 public class Main {
 
+    // Arraylist to hold the list of Student
     public static List<Student> listOfStudents = new ArrayList<>();
+
+    public static void writeToStudentFile(List<Student> list){
+
+    }
 
     public static void main(String[] args) {
 
@@ -24,6 +29,7 @@ public class Main {
         int userOpt = 0;
         char userOpt2 = '\0';
 
+        // Main program loop
         while (true) {
             Batch seBatch = new Batch(listOfStudents);
             System.out.println("" +
@@ -67,6 +73,8 @@ public class Main {
                 FileInputStream fis = null;
                 ObjectInputStream ois = null;
 
+                // Reading list of Student from file and loading them into
+                // the list of Student in program memory
                 try {
 
                     fis = new FileInputStream(new File("Students.txt"));
@@ -96,6 +104,7 @@ public class Main {
             }
 
             switch (userOpt) {
+                // Enter student details
                 case 1:
                     while (true) {
                         InputForm form = new InputForm();
@@ -103,15 +112,16 @@ public class Main {
                         listOfStudents.add(obj);
                         obj.printStudentDetails();
                         if(obj.getToResit().size()!=0) {
-                            System.out.println("COMPONENTS TO RESIT");
+                            System.out.println("\nCOMPONENTS TO RESIT");
                             for (Resit resit : obj.getToResit()) System.out.println(resit);
                         }
-                        System.out.println("Successfully added details of " + obj.getRegNo());
+                        System.out.println("\nSuccessfully added details of " + obj.getRegNo());
                         System.out.println("Do you wish to enter details of any more students? " +
                                 "[y]es or [n]o :");
                         while (true) {
                             char userChoice = sc.next().toUpperCase().charAt(0);
                             if (userChoice == 'N') {
+                                // Write List of Students to Students file
                                 FileOutputStream fos = null;
                                 ObjectOutputStream oos = null;
                                 try {
@@ -142,34 +152,46 @@ public class Main {
                         break;
                     }
                     break;
+
                 case 2:
-                    System.out.println("Class average for In-Class Main 01: " + seBatch.getIct01ClassAvg());
+                    // View class average for individual components
+                    System.out.println("\nClass average for In-Class Main 01: " + seBatch.getIct01ClassAvg());
                     System.out.println("Class average for In-Class Main 02: " + seBatch.getIct02ClassAvg());
                     System.out.println("Class average for Group Coursework 01: " + seBatch.getGroupCW01ClassAvg());
                     System.out.println("Class average for Group Coursework 02: " + seBatch.getGroupCW02ClassAvg());
                     break;
+
                 case 3:
-                    System.out.println("Number of students who've scored below 30 for ICT 01: " + seBatch.numOfIct01MarksBelow30());
+                    // View number of failed students for individual components
+                    System.out.println("\nNumber of students who've scored below 30 for ICT 01: " + seBatch.numOfIct01MarksBelow30());
                     System.out.println("Number of students who've scored below 30 for ICT 02: " + seBatch.numOfIct02MarksBelow30());
                     System.out.println("Number of students who've scored below 30 for Group CW 01: " + seBatch.numOfGroupCw01MarksBelow30());
                     System.out.println("Number of students who've scored below 30 for Group CW 02: " + seBatch.numOfGroupCw02MarksBelow30());
                     break;
+
                 case 4:
-                    System.out.println("Overall class average is: " + seBatch.getOverallClassAvg());
+                    // View overall class average
+                    System.out.println("\nOverall class average is: " + seBatch.getOverallClassAvg());
                     break;
+
                 case 5:
+                    // View students below class average
                     System.out.println("\nList of students whose total module marks fall below class average");
                     for (Student std : seBatch.getStdsBelowOverallClassAvg()) {
                         std.printStudentDetails();
                     }
                     break;
+
                 case 6:
+                    // View student above class average
                     System.out.println("\nList of students who total module marks fall above class average");
                     for (Student std : seBatch.getStdsAboveOverallClassAvg()) {
                         std.printStudentDetails();
                     }
                     break;
+
                 case 7:
+                    // View highest scorers for individual components seperately and overall module
                     Student ict01Highest = seBatch.getIct01HighestScorer();
                     Student ict02Highest = seBatch.getIct02HighestScorer();
                     Student groupCw01Highest = seBatch.getGroupCW01HighestScorer();
@@ -197,19 +219,26 @@ public class Main {
                     System.out.println("Student overall module marks: "+overallHighest.getOverallMarks());
 
                     break;
+
                 case 8:
+                    // View lowest scorer for overall module
                     Student overallLowest = seBatch.getOverallLowestScorer();
                     overallLowest.printStudentDetails();
                     break;
+
                 case 9:
+                    // View retake students
                     if (seBatch.getListOfRetakeStudents().size() == 0) System.out.println("No retake students");
                     else {
+                        System.out.println("\nList of Retake students");
                         for (Student std : seBatch.getListOfRetakeStudents()) {
                             std.printStudentDetails();
                         }
                     }
                     break;
+
                 case 10:
+                    // View list of resit student for individual components
                     if (seBatch.getListOfIctResits().size() == 0) System.out.println("No students to resit for ICT");
                     else {
                         System.out.println("\nList of Resit students for ICT\n");
@@ -242,15 +271,20 @@ public class Main {
                         }
                     }
                     break;
+
                 case 11:
+                    // View Horizontal Histogram report
                     HorizontalHistogram hGui = new HorizontalHistogram(listOfStudents);
                     break;
+
                 case 12:
+                    // View Vertical Histogram report
                     VerticalHistogram vGui = new VerticalHistogram(listOfStudents);
                     break;
             }
 
             while (true) {
+                // Get user option to go to previous menu or to exit program
                 System.out.print("\nPress 0 in the prompt below to go back or X\n>>>: ");
                 userOpt2 = sc.next().charAt(0);
                 if (!((userOpt2 == '0') || (userOpt2 == 'X'))) {

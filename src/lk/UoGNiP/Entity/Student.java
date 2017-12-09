@@ -140,7 +140,7 @@ public class Student implements Serializable {
 
     // Void method to print basic details of Student
     public void printStudentDetails() {
-        System.out.println("REGISTRATION NUMBER: " + this.getRegNo() +
+        System.out.println("\nREGISTRATION NUMBER: " + this.getRegNo() +
                 "\nNAME: " + this.getFName() + " " + this.getLName() +
                 "\nOVERALL MARKS: " + this.getOverallMarks() +
                 "\nOVERALL GRADE: " + this.getOverallGrade());
