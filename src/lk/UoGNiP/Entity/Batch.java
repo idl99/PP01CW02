@@ -17,13 +17,14 @@ public class Batch {
 
     }
 
+    // Custom Bubble sort method
     public void sort(List<Student> paramList, Comparator<Student> comparator){
         int length = paramList.size();
         Student temp = null;
-        for(int i=0; i < length; i++) {
-            for (int j = 1; j < (length - i); j++) {
+        for(int i=0; i < length; i++) {// Outer Loop of the Bubble sort
+            for (int j = 1; j < (length - i); j++) {// Inner Loop of the Bubble sort
                 if (comparator.compare(paramList.get(j - 1), paramList.get(j)) < 0){
-                    //swap elements
+                    // Swap elements
                     temp = paramList.get(j - 1);
                     paramList.set(j - 1, paramList.get(j));
                     paramList.set(j, temp);
