@@ -186,11 +186,11 @@ public class Main {
 
                     System.out.println("\nHighest scorer for Group Coursework 1");
                     groupCw01Highest.printStudentDetails();
-                    System.out.println("Student Marks for Group Coursework 1: " + groupCw01Highest.getGroupCw02Marks());
+                    System.out.println("Student Marks for Group Coursework 1: " + groupCw01Highest.getGroupCW01Marks());
 
                     System.out.println("\nHighest scorer for Group Coursework 2");
                     groupCw02Highest.printStudentDetails();
-                    System.out.println("Student Marks for Group Coursework 2: " + groupCw02Highest.getGroupCw02Marks());
+                    System.out.println("Student Marks for Group Coursework 2: " + groupCw02Highest.getGroupCW02Marks());
 
                     System.out.println("\nHighest scorer for Overall Module");
                     overallHighest.printStudentDetails();
@@ -227,7 +227,7 @@ public class Main {
                         System.out.println("\nList of Resit students for Group CW 01\n");
                         for (Student std : seBatch.getListOfGroupCW01Resits()) {
                             std.printStudentDetails();
-                            System.out.println("Student Group CW 01 Marks: " + std.getGroupCw01Marks());
+                            System.out.println("Student Group CW 01 Marks: " + std.getGroupCW01Marks());
                         }
                     }
 
@@ -238,7 +238,7 @@ public class Main {
 
                         for (Student std : seBatch.getListOfGroupCW02Resits()) {
                             std.printStudentDetails();
-                            System.out.println("Student Group CW 02 Marks: " + std.getGroupCw02Marks());
+                            System.out.println("Student Group CW 02 Marks: " + std.getGroupCW02Marks());
                         }
                     }
                     break;

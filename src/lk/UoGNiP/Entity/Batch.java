@@ -62,7 +62,7 @@ public class Batch {
         double total = 0.0;
 
         for (Student student : this.list_Of_Students) {
-            total += (double) (Integer) student.getGroupCw01Marks();
+            total += (double) (Integer) student.getGroupCW01Marks();
         }
 
         groupCW01ClassAvg = total / this.list_Of_Students.size();
@@ -74,7 +74,7 @@ public class Batch {
         double total = 0.0;
 
         for (Student student : this.list_Of_Students) {
-            total += (double) (Integer) student.getGroupCw02Marks();
+            total += (double) (Integer) student.getGroupCW02Marks();
         }
 
         groupCW02ClassAvg = total / this.list_Of_Students.size();
@@ -112,7 +112,7 @@ public class Batch {
     public int numOfGroupCw01MarksBelow30() {
         List<Student> listOfStd = new ArrayList<>();
         for (Student std : list_Of_Students) {
-            if (std.getGroupCw01Marks() < 30) listOfStd.add(std);
+            if (std.getGroupCW01Marks() < 30) listOfStd.add(std);
         }
         return listOfStd.size();
     }
@@ -120,7 +120,7 @@ public class Batch {
     public int numOfGroupCw02MarksBelow30() {
         List<Student> listOfStd = new ArrayList<>();
         for (Student std : list_Of_Students) {
-            if (std.getGroupCw02Marks() < 30) listOfStd.add(std);
+            if (std.getGroupCW02Marks() < 30) listOfStd.add(std);
         }
         return listOfStd.size();
     }
@@ -172,9 +172,9 @@ public class Batch {
         int max = 0;
         Student highestScorer = null;
         for (Student student : this.list_Of_Students) {
-            if (student.getGroupCw01Marks() > max) {
+            if (student.getGroupCW01Marks() > max) {
                 highestScorer = student;
-                max = highestScorer.getGroupCw01Marks();
+                max = highestScorer.getGroupCW01Marks();
             }
         }
         return highestScorer;
@@ -184,9 +184,9 @@ public class Batch {
         int max = 0;
         Student highestScorer = null;
         for (Student student : this.list_Of_Students) {
-            if (student.getGroupCw02Marks() > max) {
+            if (student.getGroupCW02Marks() > max) {
                 highestScorer = student;
-                max = highestScorer.getGroupCw02Marks();
+                max = highestScorer.getGroupCW02Marks();
             }
         }
         return highestScorer;
