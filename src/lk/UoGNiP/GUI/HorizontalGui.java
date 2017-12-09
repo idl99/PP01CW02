@@ -8,19 +8,21 @@ import java.util.List;
 import javax.swing.*;
 import java.awt.*;
 
-
+// HorizontalGui class which creates an HorizontalGui object
+// Defines the layout for which the Horizontal Histogram is to be displayed
 public class HorizontalGui extends JFrame {
-
 
     public HorizontalGui(List<Student> paramList){
 
         super("My Horizontal Histogram GUI");
         setSize(500,350);
 
+        // The Parent Panel for the Frame
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         add(mainPanel);
 
+        // The Title panel on which the header of the histogram is to be displayed
         JPanel titlePanel = new JPanel();
         titlePanel.setLayout(new FlowLayout());
         titlePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -28,20 +30,24 @@ public class HorizontalGui extends JFrame {
         JLabel histogramTitle = new JLabel("HORIZONTAL HISTOGRAM REPORT");
         titlePanel.add(histogramTitle);
 
+        // The Headers panel on which the category labels are to be displayed
         JPanel headersPanel = new JPanel();
         headersPanel.setLayout(new GridLayout(4,1));
         mainPanel.add(BorderLayout.LINE_START,headersPanel);
 
-        JLabel marksHeader1 = new JLabel("0-29");
-        JLabel marksHeader2 = new JLabel("30-39");
-        JLabel marksHeader3 = new JLabel("40-69");
-        JLabel marksHeader4 = new JLabel("70-100");
+        // Creating labels to indicate the marks' categories
+        JLabel categoryLbl1 = new JLabel("0-29");
+        JLabel categoryLbl2 = new JLabel("30-39");
+        JLabel categoryLbl3 = new JLabel("40-69");
+        JLabel categoryLbl4 = new JLabel("70-100");
 
-        headersPanel.add(marksHeader1);
-        headersPanel.add(marksHeader2);
-        headersPanel.add(marksHeader3);
-        headersPanel.add(marksHeader4);
+        // Adding category label to the header panel
+        headersPanel.add(categoryLbl1);
+        headersPanel.add(categoryLbl2);
+        headersPanel.add(categoryLbl3);
+        headersPanel.add(categoryLbl4);
 
+        // Defining a panel on which stars are to be printed
         JPanel StarsPanel = new JPanel();
         StarsPanel.setLayout(new GridLayout(4,1));
 
@@ -50,6 +56,7 @@ public class HorizontalGui extends JFrame {
         int category3 = 0;
         int category4 = 0;
 
+        // Getting number of stars to be printed under each category
         for(Student std: paramList){
             if(std.getOverallMarks()<30)category1++;
             else if(std.getOverallMarks()<40)category2++;
@@ -57,12 +64,18 @@ public class HorizontalGui extends JFrame {
             else category4++;
         }
 
-        mainPanel.add(BorderLayout.CENTER,StarsPanel);
+        // Creating Horizontal Stars objects for each category
+        // Each Horizontal Star object will invoke its paint method, which will
+        // paint the number of stars, passed as a argument to the constructor
         StarsPanel.add(new HorizontalStars(category1));
         StarsPanel.add(new HorizontalStars(category2));
         StarsPanel.add(new HorizontalStars(category3));
         StarsPanel.add(new HorizontalStars(category4));
 
+        // Adding Stars Panel to the Main Panel
+        mainPanel.add(BorderLayout.CENTER,StarsPanel);
+
+        // Adding a label displaying the total number of students
         JLabel numOfStudents = new JLabel("Total number of students: "+Integer.toString(paramList.size()));
         mainPanel.add(BorderLayout.PAGE_END,numOfStudents);
 

@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+// VerticalGui class which creates an VerticalGui object
+// Defines the layout for which the Vertical Histogram is to be displayed
 public class VerticalGui extends JFrame{
 
     public VerticalGui(List<Student> paramList){
@@ -14,22 +16,29 @@ public class VerticalGui extends JFrame{
         super("My Vertical Histogram GUI");
         setSize(350,500);
 
+        // The Parent Panel for the Frame
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         add(mainPanel);
 
+        // The Headers panel on which the category labels are to be displayed
         JPanel headersPanel = new JPanel();
         headersPanel.setLayout(new GridLayout(1,4));
-        JLabel marksHeader1 = new JLabel("0-29");
-        JLabel marksHeader2 = new JLabel("30-39");
-        JLabel marksHeader3 = new JLabel("40-69");
-        JLabel marksHeader4 = new JLabel("70-100");
-        headersPanel.add(marksHeader1);
-        headersPanel.add(marksHeader2);
-        headersPanel.add(marksHeader3);
-        headersPanel.add(marksHeader4);
         mainPanel.add(BorderLayout.NORTH,headersPanel);
 
+        // Creating labels to indicate the marks' categories
+        JLabel categoryLbl1 = new JLabel("0-29");
+        JLabel categoryLbl2 = new JLabel("30-39");
+        JLabel categoryLbl3 = new JLabel("40-69");
+        JLabel categoryLbl4 = new JLabel("70-100");
+
+        // Adding category label to the header panel
+        headersPanel.add(categoryLbl1);
+        headersPanel.add(categoryLbl2);
+        headersPanel.add(categoryLbl3);
+        headersPanel.add(categoryLbl4);
+
+        // Defining a panel on which stars are to be printed
         JPanel StarsPanel = new JPanel();
         StarsPanel.setLayout(new GridLayout(1,4));
 
@@ -38,6 +47,7 @@ public class VerticalGui extends JFrame{
         int category3 = 0;
         int category4 = 0;
 
+        // Getting number of stars to be printed under each category
         for(Student std: paramList){
             if(std.getOverallMarks()<30)category1++;
             else if(std.getOverallMarks()<40)category2++;
@@ -45,12 +55,18 @@ public class VerticalGui extends JFrame{
             else category4++;
         }
 
-        mainPanel.add(BorderLayout.CENTER,StarsPanel);
+        // Creating Vertical Stars objects for each category
+        // Each Vertical Star object will invoke its paint method, which will
+        // paint the number of stars, passed as a argument to the constructor
         StarsPanel.add(new VerticalStars(category1));
         StarsPanel.add(new VerticalStars(category2));
         StarsPanel.add(new VerticalStars(category3));
         StarsPanel.add(new VerticalStars(category4));
 
+        // Adding Stars Panel to the Main Panel
+        mainPanel.add(BorderLayout.CENTER,StarsPanel);
+
+        // Adding a label displaying the total number of students
         JLabel numOfStudents = new JLabel("Total number of students: "+Integer.toString(paramList.size()));
         mainPanel.add(BorderLayout.PAGE_END,numOfStudents);
 
