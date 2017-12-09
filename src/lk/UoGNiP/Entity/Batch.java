@@ -1,7 +1,7 @@
 package lk.UoGNiP.Entity;
 
-import lk.UoGNiP.Comparator.lastNameComparator;
-import lk.UoGNiP.Comparator.overallMarkComparator;
+import lk.UoGNiP.Comparator.LastNameComparator;
+import lk.UoGNiP.Comparator.OverallMarkComparator;
 import lk.UoGNiP.Data.Resit;
 import lk.UoGNiP.Data.Grade;
 
@@ -140,7 +140,7 @@ public class Batch {
         for (Student student : this.list_Of_Students) {
             if (student.getOverallMarks() > batchAvg) stdsAboveClassAvg.add(student);
         }
-        sort(stdsAboveClassAvg,new overallMarkComparator());
+        sort(stdsAboveClassAvg,new OverallMarkComparator());
         return stdsAboveClassAvg;
     }
 
@@ -229,7 +229,7 @@ public class Batch {
         for (Student std : list_Of_Students) {
             if (std.getOverallGrade() != Grade.Fail_Retake && std.getToResit().contains(Resit.Resit_Ict)) listOfStd.add(std);
         }
-        sort(listOfStd, new lastNameComparator());
+        sort(listOfStd, new LastNameComparator());
         return listOfStd;
     }
 
@@ -239,7 +239,7 @@ public class Batch {
             if (std.getOverallGrade() != Grade.Fail_Retake && std.getToResit().contains(Resit.Resit_GroupCw01))
                 listOfStd.add(std);
         }
-        sort(listOfStd, new lastNameComparator());
+        sort(listOfStd, new LastNameComparator());
         return listOfStd;
     }
 
@@ -249,7 +249,7 @@ public class Batch {
             if (std.getOverallGrade() != Grade.Fail_Retake && std.getToResit().contains(Resit.Resit_GroupCw02))
                 listOfStd.add(std);
         }
-        sort(listOfStd, new lastNameComparator());
+        sort(listOfStd, new LastNameComparator());
         return listOfStd;
     }
 
