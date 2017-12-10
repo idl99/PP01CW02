@@ -69,7 +69,7 @@ public class Main {
 
             if (userOpt == 0) break;
 
-            else if (userOpt>1 && new File("Students.txt").exists()) {
+            //else if (userOpt>1 && new File("Students.txt").exists()) {
                 FileInputStream fis = null;
                 ObjectInputStream ois = null;
 
@@ -92,16 +92,17 @@ public class Main {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
+                }finally {
+                    try {
+                        ois.close();
+                        fis.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (NullPointerException e) {
+                        //e.printStackTrace();
+                    }
                 }
-                try {
-                    ois.close();
-                    fis.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                }
-            }
+            //}
 
             switch (userOpt) {
                 // Enter student details

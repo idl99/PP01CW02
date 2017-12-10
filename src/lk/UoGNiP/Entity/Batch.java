@@ -213,7 +213,7 @@ public class Batch {
         int max = 0;
         Student highestScorer = null;
         for (Student student : this.listOfStudents) {
-            if (student.getIct01Marks() > max) {
+            if (student.getOverallMarks() > max) {
                 highestScorer = student;
                 max = highestScorer.getOverallMarks();
             }
