@@ -118,9 +118,16 @@ public class Main {
                         System.out.println("\nSuccessfully added details of " + obj.getRegNo());
                         System.out.println("Do you wish to enter details of any more students? " +
                                 "[y]es or [n]o :");
+
+                        char userChoice='\0';
                         while (true) {
-                            char userChoice = sc.next().toUpperCase().charAt(0);
-                            if (userChoice == 'N') {
+                            userChoice = sc.next().toUpperCase().charAt(0);
+                            if (!(userChoice == 'Y' || userChoice == 'N' )){
+                                System.out.println("Invalid Input. Enter Y to enter details of more students" +
+                                        "or N to stop");
+                                continue;
+                            }
+                            else if (userChoice == 'N') {
                                 // Write List of Students to Students file
                                 FileOutputStream fos = null;
                                 ObjectOutputStream oos = null;
@@ -143,15 +150,11 @@ public class Main {
 
                                 }
                             }
-                            else {
-                                System.out.println("Invalid Input. Enter Y to enter details of more students" +
-                                        "or N to stop");
-                            }
-                            break;
+                            break; //Break the loop of input validation
                         }
-                        break;
+                        if (userChoice=='N') break; //Break the loop of entering student details
                     }
-                    break;
+                    break; // Break case in Switch...Case
 
                 case 2:
                     // View class average for individual components
