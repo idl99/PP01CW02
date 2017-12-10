@@ -134,20 +134,20 @@ public class Main {
                                     e.printStackTrace();
                                 }
                                 finally {
-                                    try{
+                                    try {
                                         oos.close();
                                         fos.close();
-                                    }catch (IOException e){
+                                    } catch (IOException e) {
                                         e.printStackTrace();
                                     }
 
                                 }
-                                break;
-                            } else if(userChoice=='Y') continue;
+                            }
                             else {
                                 System.out.println("Invalid Input. Enter Y to enter details of more students" +
                                         "or N to stop");
                             }
+                            break;
                         }
                         break;
                     }
