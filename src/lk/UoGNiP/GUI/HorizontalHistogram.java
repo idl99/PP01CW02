@@ -16,6 +16,7 @@ public class HorizontalHistogram extends JFrame {
 
         super("My Horizontal Histogram GUI");
         setSize(500,350);
+        setResizable(false);
 
         // The Parent Panel for the Frame
         JPanel mainPanel = new JPanel();
@@ -80,7 +81,7 @@ public class HorizontalHistogram extends JFrame {
         mainPanel.add(BorderLayout.PAGE_END,numOfStudents);
 
         setVisible(true);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 
     }
 }
@@ -94,9 +95,13 @@ class HorizontalStars extends JPanel {
 
         Graphics2D g2d = (Graphics2D) g;
 
-        for(int i=0; i<numOfStars; i++){
+        int row=0;
+        for(int i=0; i<numOfStars;){
+            //row variable
+            row=i/40;
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 20));
-            g2d.drawString("*",20+(i*10),45);
+            g2d.drawString("*",20+(i%40*10),45+(row*10));
+            i++;
         }
     }
 

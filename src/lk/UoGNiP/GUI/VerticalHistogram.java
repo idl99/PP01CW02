@@ -15,6 +15,7 @@ public class VerticalHistogram extends JFrame{
 
         super("My Vertical Histogram GUI");
         setSize(350,500);
+        setResizable(false);
 
         // The Parent Panel for the Frame
         JPanel mainPanel = new JPanel();
@@ -71,7 +72,7 @@ public class VerticalHistogram extends JFrame{
         mainPanel.add(BorderLayout.PAGE_END,numOfStudents);
 
         setVisible(true);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 
     }
 
@@ -84,11 +85,23 @@ class VerticalStars extends JPanel{
     @Override
     public void paint(Graphics g) {
 
-        Graphics2D g2d = (Graphics2D) g;
+        /*Graphics2D g2d = (Graphics2D) g;
 
         for(int i=0; i<numOfStars; i++){
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 20));
             g2d.drawString("*",10,30+(i*20));
+        }
+
+        */
+        Graphics2D g2d = (Graphics2D) g;
+
+        int col=0;
+        for(int i=0; i<numOfStars;){
+            //row variable
+            col=i/40;
+            g2d.setFont(new Font("TimesRoman", Font.BOLD, 20));
+            g2d.drawString("*",col*10,30+(i%40*10));
+            i++;
         }
     }
 
