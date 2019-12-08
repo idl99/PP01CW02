@@ -1,2 +1,2 @@
-# Student-Grading-System
-A Student Grading System developed in core Java for an University coursework assignment.
+# Student Grading System
+A student grading system developed to sharpen my skills in Java.
